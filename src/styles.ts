@@ -48,7 +48,6 @@ export const AddItemButton = styled.button<AddItemButtonProps>`
   text-align: left;
   transition: background 85ms ease-in;
   width: 100%;
-
   &:hover {
     background-color: #ffffff52;
   }
