@@ -1,5 +1,6 @@
 import {AppContainer} from './styles';
-import Column from './components/Column';
+import {Column} from './components/Column';
+import {Card} from './components/Card';
 
 /*const buttonStyles: CSSProperties = {
     backgroundColor: "#5aac44",
@@ -11,10 +12,15 @@ import Column from './components/Column';
 export const App = () => {
     return (
         <AppContainer>
-            <Column text="today"/>
-            <Column text="tomorrow"/>
-            <Column text="now"/>
-
+            <Column text="today">
+                <Card text="work on CRUD"/>
+            </Column>
+            <Column text="today">
+                <Card text="finish styling"/>
+            </Column>
+            <Column text="next week">
+                <Card text="finish client"/>
+            </Column>
         </AppContainer>
     );
 }
