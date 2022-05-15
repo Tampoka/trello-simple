@@ -1,6 +1,5 @@
-import './App.css';
 
-function App() {
+export function App() {
   return (
     <div className="App">
      Trello
@@ -8,4 +7,3 @@ function App() {
   );
 }
 
-export default App;
