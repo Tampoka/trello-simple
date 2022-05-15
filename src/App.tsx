@@ -1,6 +1,7 @@
 import {AppContainer} from './styles';
 import {Column} from './components/Column';
 import {Card} from './components/Card';
+import {AddNewItem} from './components/AddNewItem';
 
 /*const buttonStyles: CSSProperties = {
     backgroundColor: "#5aac44",
@@ -12,15 +13,16 @@ import {Card} from './components/Card';
 export const App = () => {
     return (
         <AppContainer>
-            <Column text="today">
-                <Card text="work on CRUD"/>
+            <Column text="To Do">
+                <Card text="Generate app scaffold"/>
             </Column>
-            <Column text="today">
-                <Card text="finish styling"/>
+            <Column text="In Progress">
+                <Card text="Learn Typescript"/>
             </Column>
-            <Column text="next week">
-                <Card text="finish client"/>
+            <Column text="Done">
+                <Card text="Begin to use static typing"/>
             </Column>
+            <AddNewItem toggleButtonText="+ Add another list" onAdd={console.log}/>
         </AppContainer>
     );
 }

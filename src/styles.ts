@@ -12,6 +12,7 @@ export const AppContainer = styled.div`
 export const ColumnContainer = styled.div`
   background-color: #ebecf0;
   width: 300px;
+  min-width: 100px;
   min-height: 120px;
   margin-right: 20px;
   border-radius: 3px;
@@ -38,7 +39,7 @@ type AddItemButtonProps = {
 }
 
 export const AddItemButton = styled.button<AddItemButtonProps>`
-  background-color: #ffffff3d;
+  background-color: rgba(222, 219, 219, 0.24);
   border-radius: 3px;
   border: none;
   color: ${props => (props.dark ? "#000" : "#fff")};
@@ -48,8 +49,9 @@ export const AddItemButton = styled.button<AddItemButtonProps>`
   text-align: left;
   transition: background 85ms ease-in;
   width: 100%;
+
   &:hover {
-    background-color: #ffffff52;
+    background-color: rgba(154, 153, 153, 0.32);
   }
 `
 export const NewItemFormContainer = styled.div`
