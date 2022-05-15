@@ -19,8 +19,9 @@ padding: 8px 8px;
 flex-grow: 0;
 `
 export const ColumnTitle = styled.div`
-padding: 6px 16px 12px;
-font-weight: bold;
+  padding: 6px 16px 12px;
+  font-weight: bold;
+  color: #d354d7;
 `
 
 export const CardContainer = styled.div`

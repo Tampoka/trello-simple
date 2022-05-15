@@ -1,18 +1,21 @@
-import {CSSProperties} from 'react';
+import {AppContainer} from './styles';
+import Column from './components/Column';
 
-const buttonStyles: CSSProperties = {
+/*const buttonStyles: CSSProperties = {
     backgroundColor: "#5aac44",
     borderRadius: "3px",
     border: "none",
     boxShadow: "none"
-}
+}*/
 
-export function App() {
-  return (
-    <div className="App">
-     Trello
-        <button style={buttonStyles}>Click me</button>
-    </div>
-  );
+export const App = () => {
+    return (
+        <AppContainer>
+            <Column text="today"/>
+            <Column text="tomorrow"/>
+            <Column text="now"/>
+
+        </AppContainer>
+    );
 }
 
