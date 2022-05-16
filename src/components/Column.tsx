@@ -1,4 +1,4 @@
-import {FC, ReactNode} from 'react';
+import {FC} from 'react';
 import {ColumnContainer, ColumnTitle} from '../styles';
 import {AddNewItem} from './AddNewItem';
 import {useAppState} from '../state/AppStateContext';
