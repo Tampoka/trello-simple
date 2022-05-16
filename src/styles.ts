@@ -9,16 +9,6 @@ export const AppContainer = styled.div`
   padding: 20px;
   width: 100%;
 `
-export const ColumnContainer = styled.div`
-  background-color: #ebecf0;
-  width: 300px;
-  min-width: 100px;
-  min-height: 120px;
-  margin-right: 20px;
-  border-radius: 3px;
-  padding: 8px 8px;
-  flex-grow: 0;
-`
 export const ColumnTitle = styled.div`
   padding: 6px 16px 12px;
   font-weight: bold;
@@ -89,4 +79,14 @@ interface DragPreviewContainerProps {
 
 export const DragPreviewContainer = styled.div<DragPreviewContainerProps>`
   opacity: ${props => (props.isHidden ? 0.3 : 1)}
+`
+export const ColumnContainer = styled(DragPreviewContainer)`
+  background-color: #ebecf0;
+  width: 300px;
+  min-width: 100px;
+  min-height: 120px;
+  margin-right: 20px;
+  border-radius: 3px;
+  padding: 8px 8px;
+  flex-grow: 0;
 `
