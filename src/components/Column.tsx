@@ -6,6 +6,7 @@ import {Card} from './Card';
 import {addTask, moveList} from '../state/actions';
 import {useItemDrag} from '../utils/useItemDrag';
 import {useDrop} from 'react-dnd';
+import {isHidden} from '../utils/isHidden';
 
 /*type PropsWithChildren<P> = P & {
     children?: ReactNode;
@@ -40,7 +41,9 @@ export const Column: FC<ColumnProps> = ({text, id}) => {
     drag(drop(ref))
 
     return (
-        <ColumnContainer ref={ref}>
+        <ColumnContainer ref={ref}
+                         isHidden={isHidden(draggedItem, "COLUMN", id)}
+        >
             <ColumnTitle>{text}</ColumnTitle>
             {tasks.map(task => (
                 <Card id={task.id} text={task.text} key={task.id}/>
