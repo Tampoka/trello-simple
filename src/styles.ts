@@ -77,5 +77,9 @@ export const NewItemInput = styled.input`
   margin-bottom: 0.5rem;
   padding: 0.5rem 1rem;
   width: 100%;
+
+  &:focus {
+    outline: 1px solid rgba(14, 76, 100, 0.76);
+  }
 `
 
