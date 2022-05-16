@@ -1,5 +1,6 @@
 import {Action} from './actions';
 import {v1} from 'uuid';
+import {findItemIndexById} from '../utils/arrayUtils';
 
 export type Task = {
     id: string
@@ -16,20 +17,33 @@ export type AppState = {
     lists: List[]
 }
 
-export const appStateReducer = (state: AppState, action: Action): AppState => {
+export const appStateReducer = (draft: AppState, action: Action): AppState | void => {
     switch (action.type) {
+        /*  case "ADD_LIST": {
+              return {...state,
+                  lists: [...state.lists,
+                      {id: v1(), text: action.payload, tasks: []}]}
+          }*/
         case "ADD_LIST": {
-            return {...state,
-                lists: [...state.lists,
-                    {id: v1(), text: action.payload, tasks: []}]}
+            draft.lists.push({
+                id: v1(),
+                text: action.payload,
+                tasks: []
+            })
+            break
         }
-   /*     case "ADD_TASK": {
-            return {...state, lists: [...state.lists, state.lists[action.payload.listId]:{
-                ...state.lists[action.payload.listId,tasks:{id:v1(),text:action.payload.text}
-            ]}
-        }*/
+        case "ADD_TASK": {
+            const {text, listId} = action.payload
+            const targetListIndex = findItemIndexById(draft.lists, listId)
+
+            draft.lists[targetListIndex].tasks.push({
+                id: v1(),
+                text
+            })
+            break
+        }
         default: {
-            return state
+            break
         }
     }
 }
