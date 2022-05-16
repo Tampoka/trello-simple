@@ -3,13 +3,6 @@ import {Column} from './components/Column';
 import {AddNewItem} from './components/AddNewItem';
 import {useAppState} from './state/AppStateContext';
 
-/*const buttonStyles: CSSProperties = {
-    backgroundColor: "#5aac44",
-    borderRadius: "3px",
-    border: "none",
-    boxShadow: "none"
-}*/
-
 export const App = () => {
     const {lists} = useAppState()
     return (
