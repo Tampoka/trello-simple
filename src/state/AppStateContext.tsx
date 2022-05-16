@@ -1,4 +1,4 @@
-import {createContext, FC, ReactNode} from 'react';
+import {createContext, FC, ReactNode, useContext} from 'react';
 
 type Task = {
     id: string
@@ -56,4 +56,8 @@ export const AppStateProvider:FC<AppStateProviderProps>=({children})=>{
             {children}
         </AppStateContext.Provider>
     )
+}
+
+export const useAppState = () => {
+    return useContext(AppStateContext)
 }
