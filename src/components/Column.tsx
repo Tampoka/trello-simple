@@ -8,9 +8,10 @@ import {AddNewItem} from './AddNewItem';
 
 type ColumnProps = {
     text?: string
+    id:string
     children?: ReactNode
 }
-export const Column: FC<ColumnProps> = ({text, children}) => {
+export const Column: FC<ColumnProps> = ({text, id,children}) => {
     return (
         <ColumnContainer>
             <ColumnTitle>{text}</ColumnTitle>
