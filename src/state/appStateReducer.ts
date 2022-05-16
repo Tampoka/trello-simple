@@ -1,6 +1,7 @@
 import {Action} from './actions';
 import {v1} from 'uuid';
 import {findItemIndexById, moveItem} from '../utils/arrayUtils';
+import {DragItem} from '../DragItem';
 
 export type Task = {
     id: string
@@ -15,6 +16,7 @@ export type List = {
 
 export type AppState = {
     lists: List[]
+    draggedItem: DragItem | null
 }
 
 export const appStateReducer = (draft: AppState, action: Action): AppState | void => {
