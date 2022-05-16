@@ -1,13 +1,13 @@
 export type ColumnDragItem={
     id:string
     text:string
-    type:"Column"
+    type:"COLUMN"
 }
 
 export type CardDragItem={
     id:string
     text:string
-    type:"Card"
+    type:"CARD"
 }
 
 export type DragItem=ColumnDragItem|CardDragItem
