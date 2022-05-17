@@ -48,7 +48,10 @@ export const Column: FC<ColumnProps> = ({text, id, isPreview}) => {
         >
             <ColumnTitle>{text}</ColumnTitle>
             {tasks.map(task => (
-                <Card id={task.id} text={task.text} key={task.id}/>
+                <Card id={task.id}
+                      columnId={id}
+                      text={task.text}
+                      key={task.id}/>
             ))}
             <AddNewItem
                 toggleButtonText="+ Add another task"
