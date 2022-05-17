@@ -1,5 +1,6 @@
-import {AppState} from './state/appStateReducer';
-import {ComponentType, useState} from 'react';
+import {useState, useEffect, ComponentType} from "react"
+import {AppState} from "./state/appStateReducer"
+import {load} from "./api"
 
 type InjectedProps = {
     initialState: AppState
@@ -8,16 +9,38 @@ type InjectedProps = {
 type PropsWithoutInjected<TBaseProps> = Omit<TBaseProps,
     keyof InjectedProps>
 
-export function WithInitialState<TProps>(
+export function withInitialState<TProps>(
     WrappedComponent: ComponentType<PropsWithoutInjected<TProps> & InjectedProps>
 ) {
     return (props: PropsWithoutInjected<TProps>) => {
-        // eslint-disable-next-line react-hooks/rules-of-hooks
         const [initialState, setInitialState] = useState<AppState>({
             lists: [],
             draggedItem: null
         })
-        return <WrappedComponent {...props} initialState={initialState}/>
+        const [isLoading, setIsLoading] = useState(true)
+        const [error, setError] = useState<Error | undefined>()
 
+        useEffect(() => {
+            const fetchInitialState = async () => {
+                try {
+                    const data = await load()
+                    setInitialState(data)
+                } catch (e: any) {
+                    setError(e)
+                }
+                setIsLoading(false)
+            }
+            fetchInitialState()
+        }, [])
+
+        if (isLoading) {
+            return <div>Loading</div>
+        }
+
+        if (error) {
+            return <div>{error.message}</div>
+        }
+
+        return <WrappedComponent {...props} initialState={initialState}/>
     }
 }
