@@ -1,5 +1,5 @@
 import {FC, useRef} from 'react';
-import {ColumnContainer, ColumnTitle} from '../styles';
+import {ColumnContainer, ColumnTitle, DeleteButton} from '../styles';
 import {AddNewItem} from './AddNewItem';
 import {useAppState} from '../state/AppStateContext';
 import {Card} from './Card';
@@ -52,8 +52,9 @@ export const Column: FC<ColumnProps> = ({text, id, isPreview}) => {
                          ref={ref}
                          isHidden={isHidden(draggedItem, "COLUMN", id, isPreview)}
         >
-            <ColumnTitle>{text}
-            <button onClick={()=>dispatch(deleteList(id))}>X</button>
+            <ColumnTitle>
+                <DeleteButton onClick={() => dispatch(deleteList(id))}>X</DeleteButton>
+                {text}
             </ColumnTitle>
             {tasks.map(task => (
                 <Card

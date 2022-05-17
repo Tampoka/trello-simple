@@ -1,9 +1,9 @@
-import {CardContainer} from "../styles";
+import {CardContainer, DeleteButton} from "../styles";
 import {useAppState} from '../state/AppStateContext';
 import {useRef} from 'react';
 import {isHidden} from '../utils/isHidden';
 import {useItemDrag} from '../utils/useItemDrag';
-import {moveTask, setDraggedItem} from '../state/actions';
+import {deleteTask, moveTask, setDraggedItem} from '../state/actions';
 import {useDrop} from 'react-dnd';
 
 type CardProps = {
@@ -49,7 +49,9 @@ export const Card = ({text, id, columnId, isPreview}: CardProps) => {
             isHidden={isHidden(draggedItem, "CARD", id, isPreview)}
             isPreview={isPreview}
             ref={ref}
-        >{text}</CardContainer>
+        >{text}
+        <DeleteButton onClick={()=>dispatch(deleteTask(id,columnId))}>X</DeleteButton>
+        </CardContainer>
     );
 };
 

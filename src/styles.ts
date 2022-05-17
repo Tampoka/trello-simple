@@ -54,7 +54,6 @@ export const ColumnTitle = styled.div`
   color: #b02ac5;
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
 `
 
 export const CardContainer = styled(DragPreviewContainer)`
@@ -65,6 +64,9 @@ export const CardContainer = styled(DragPreviewContainer)`
   max-width: 300px;
   border-radius: 3px;
   box-shadow: #091e4240 0 1px 0 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
 `
 
 type AddItemButtonProps = {
@@ -131,4 +133,8 @@ export const FlexColumnContainer = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   align-items: flex-start;
+`
+
+export const DeleteButton=styled.button`
+  margin-right: 50px;
 `
