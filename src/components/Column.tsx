@@ -3,7 +3,7 @@ import {ColumnContainer, ColumnTitle} from '../styles';
 import {AddNewItem} from './AddNewItem';
 import {useAppState} from '../state/AppStateContext';
 import {Card} from './Card';
-import {addTask, moveList, moveTask, setDraggedItem} from '../state/actions';
+import {addTask, deleteList, moveList, moveTask, setDraggedItem} from '../state/actions';
 import {useItemDrag} from '../utils/useItemDrag';
 import {useDrop} from 'react-dnd';
 import {isHidden} from '../utils/isHidden';
@@ -52,7 +52,9 @@ export const Column: FC<ColumnProps> = ({text, id, isPreview}) => {
                          ref={ref}
                          isHidden={isHidden(draggedItem, "COLUMN", id, isPreview)}
         >
-            <ColumnTitle>{text}</ColumnTitle>
+            <ColumnTitle>{text}
+            <button onClick={()=>dispatch(deleteList(id))}>X</button>
+            </ColumnTitle>
             {tasks.map(task => (
                 <Card
                     id={task.id}

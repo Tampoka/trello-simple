@@ -29,6 +29,10 @@ export const appStateReducer = (draft: AppState, action: Action): AppState | voi
             })
             break
         }
+        case 'DELETE_LIST': {
+            draft.lists=draft.lists.filter(list => list.id !== action.payload)
+            break
+        }
         case "ADD_TASK": {
             const {text, columnId} = action.payload
             const targetListIndex = findItemIndexById(draft.lists, columnId)

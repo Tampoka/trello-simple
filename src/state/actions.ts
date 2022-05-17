@@ -5,6 +5,10 @@ export type Action =
     type: "ADD_LIST"
     payload: string
 }
+|{
+    type:"DELETE_LIST"
+    payload:string
+}
     | {
     type: "ADD_TASK"
     payload: {
@@ -49,6 +53,13 @@ export const addList = (
 ): Action => ({
     type: "ADD_LIST",
     payload: text
+})
+
+export const deleteList = (
+    columnId: string,
+): Action => ({
+    type: "DELETE_LIST",
+    payload: columnId
 })
 
 export const moveList = (

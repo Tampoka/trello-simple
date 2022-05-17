@@ -1,4 +1,4 @@
-import {AppContainer} from './styles';
+import {AppContainer, FlexColumnContainer} from './styles';
 import {Column} from './components/Column';
 import {AddNewItem} from './components/AddNewItem';
 import {useAppState} from './state/AppStateContext';
@@ -10,11 +10,12 @@ export const App = () => {
     return (
         <AppContainer>
             <CustomDragLayer/>
-            {lists.map(list => (
-                <Column id={list.id} text={list.text} key={list.id}/>
-            ))}
             <AddNewItem toggleButtonText="+ Add another list"
                         onAdd={text => dispatch(addList(text))}/>
+            <FlexColumnContainer>{lists.map(list => (
+                <Column id={list.id} text={list.text} key={list.id}/>
+            ))}</FlexColumnContainer>
+
         </AppContainer>
     );
 }

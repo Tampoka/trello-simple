@@ -4,7 +4,9 @@ export const AppContainer = styled.div`
   align-items: flex-start;
   background-color: #3179ba;
   display: flex;
-  flex-direction: row;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  row-gap: 20px;
   height: 100%;
   padding: 20px;
   width: 100%;
@@ -28,7 +30,7 @@ type DragPreviewWrapperProps = {
 }
 
 export const DragPreviewWrapper = styled.div.attrs<DragPreviewWrapperProps>(
-    ({ position: { x, y } }) => ({
+    ({position: {x, y}}) => ({
         style: {
             transform: `translate(${x}px, ${y}px)`
         }
@@ -38,7 +40,7 @@ export const DragPreviewWrapper = styled.div.attrs<DragPreviewWrapperProps>(
 export const ColumnContainer = styled(DragPreviewContainer)`
   background-color: #ebecf0;
   width: 300px;
-  min-width: 100px;
+  min-width: 150px;
   min-height: 40px;
   margin-right: 20px;
   border-radius: 3px;
@@ -50,6 +52,9 @@ export const ColumnTitle = styled.div`
   padding: 6px 16px 12px;
   font-weight: bold;
   color: #b02ac5;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
 `
 
 export const CardContainer = styled(DragPreviewContainer)`
@@ -94,7 +99,7 @@ export const NewItemFormContainer = styled.div`
 export const NewItemInput = styled.input`
   border-radius: 3px;
   border: none;
-  box-shadow: #091e4240 0 1px 0 0; 
+  box-shadow: #091e4240 0 1px 0 0;
   margin-bottom: 0.5rem;
   padding: 0.5rem 1rem;
   width: 100%;
@@ -118,4 +123,12 @@ export const CustomDragLayerContainer = styled.div`
   top: 0;
   width: 100%;
   z-index: 100;
+`
+
+export const FlexColumnContainer = styled.div`
+  display: flex;
+  row-gap: 20px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
 `
