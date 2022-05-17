@@ -9,7 +9,7 @@ export type Action =
     type: "ADD_TASK"
     payload: {
         text: string
-        listId: string
+        columnId: string
     }
 }
     | {
@@ -36,12 +36,12 @@ export type Action =
 
 export const addTask = (
     text: string,
-    listId: string,
+    columnId: string,
 ): Action => ({
     type: "ADD_TASK",
     payload: {
         text,
-        listId
+        columnId: columnId
     }
 })
 export const addList = (
