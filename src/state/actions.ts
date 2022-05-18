@@ -43,6 +43,13 @@ export type Action =
     type: "SET_DRAGGED_ITEM"
     payload: DragItem | null
 }
+    | {
+    type: "UPDATE_LIST"
+    payload: {
+        title: string
+        columnId: string
+    }
+}
 
 
 export const addTask = (
@@ -107,4 +114,15 @@ export const setDraggedItem = (
 ): Action => ({
     type: "SET_DRAGGED_ITEM",
     payload: draggedItem
+})
+
+export const updateList = (
+    title: string,
+    columnId: string,
+): Action => ({
+    type: "UPDATE_LIST",
+    payload: {
+        title,
+        columnId
+    }
 })
