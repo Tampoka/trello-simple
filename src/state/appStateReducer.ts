@@ -59,6 +59,16 @@ export const appStateReducer = (draft: AppState, action: Action): AppState | voi
             draft.lists[targetListIndex].text=title
             break
         }
+        case 'UPDATE_TASK':{
+            const {id, columnId,title} = action.payload
+            const targetListIndex = findItemIndexById(draft.lists, columnId)
+            const taskIndex = findItemIndexById(
+                draft.lists[targetListIndex].tasks,
+                id
+            )
+            draft.lists[targetListIndex].tasks[taskIndex].text=title
+            break
+        }
         case "MOVE_LIST": {
             const {draggedId, hoverId} = action.payload
             const dragIndex = findItemIndexById(draft.lists, draggedId)
