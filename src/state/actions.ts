@@ -50,6 +50,14 @@ export type Action =
         columnId: string
     }
 }
+    | {
+    type: "UPDATE_TASK"
+    payload: {
+        title: string
+        columnId: string
+        id:string
+    }
+}
 
 
 export const addTask = (
@@ -124,5 +132,18 @@ export const updateList = (
     payload: {
         title,
         columnId
+    }
+})
+
+export const updateTask = (
+    title: string,
+    columnId: string,
+    id:string
+): Action => ({
+    type: "UPDATE_TASK",
+    payload: {
+        title,
+        columnId,
+        id
     }
 })
