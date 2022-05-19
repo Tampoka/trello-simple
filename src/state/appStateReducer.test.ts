@@ -81,10 +81,10 @@ describe("appStateReducer", () => {
         const endIndex = initialState.lists.findIndex(list => list.id === hoverId)
 
         const endState = produce(initialState, (draft) => {
-            moveItem(initialState.lists, startIndex, endIndex)
+            initialState.lists = moveItem(initialState.lists, startIndex, endIndex)
         })
 
-        // expect(state).toEqual(endState);
+        expect(state).toEqual(endState);
         expect(state.lists[0].id).toBe("2");
         expect(state.lists[1].id).toBe("1");
     })
