@@ -2,7 +2,9 @@ import {Action} from './actions';
 import {v1} from 'uuid';
 import {findItemIndexById, moveItem} from '../utils/arrayUtils';
 import {DragItem} from '../DragItem';
+import produce from 'immer'
 
+const initState={} as AppState
 export type Task = {
     id: string
     text: string
@@ -19,7 +21,8 @@ export type AppState = {
     draggedItem: DragItem | null
 }
 
-export const appStateReducer = (draft: AppState, action: Action): AppState | void => {
+export const appStateReducer = (state=initState, action: Action) =>
+produce(state,(draft:AppState)=>{
     switch (action.type) {
         case "ADD_LIST": {
             draft.lists.push({
@@ -112,8 +115,7 @@ export const appStateReducer = (draft: AppState, action: Action): AppState | voi
             draft.draggedItem = action.payload
             break
         }
-        default: {
+        default:
             break
-        }
     }
-}
+})
