@@ -1,7 +1,7 @@
 import {AppState, appStateReducer} from './appStateReducer';
 import produce from 'immer'
 import {v1} from 'uuid';
-import {moveItem} from '../utils/arrayUtils';
+import {findItemIndexById, moveItem} from '../utils/arrayUtils';
 
 let initialState: AppState
 
@@ -91,6 +91,25 @@ describe("appStateReducer", () => {
         })
     })
     describe("task", () => {
+        test("with text will be added to correct list", () => {
+            const text = "finish todos"
+            const columnId = "2"
+            const state = appStateReducer(initialState, {
+                type: "ADD_TASK", payload: {
+                    text,
+                    columnId
+                }
+            })
+            const endState = produce(initialState, (draft) => {
+                const targetListIndex = findItemIndexById(draft.lists, columnId)
+                draft.lists[targetListIndex].tasks.push({
+                    id: v1(),
+                    text
+                })
+            })
 
+            expect(state.lists.length).toBe(2);
+            expect(state.lists[1].tasks.length).toBe(2);
+        })
     })
 })
